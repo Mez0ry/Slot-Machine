@@ -6,6 +6,7 @@ Game::Game()
 		std::puts("SDL Context successfully initialized");
 	}
 
+	mainScene_.setup();
 	bGameLoop_ = true;
 }
 
@@ -14,7 +15,7 @@ Game::~Game()
 
 }
 
-void Game::play()
+void Game::play()	
 {
 	while (bGameLoop_) {
 

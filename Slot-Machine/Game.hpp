@@ -1,7 +1,7 @@
 #ifndef SLOTMACHINE_GAME_HPP
 #define SLOTMACHINE_GAME_HPP
 #include "CSDLContext.hpp"
-
+#include "MainScene.hpp"
 class Game
 {
 private:
@@ -22,6 +22,9 @@ private:
 	void update();
 	void render();
 	void input_handler();
+
+private:
+	MainScene mainScene_;
 };
 
 #endif // !SLOTMACHINE_GAME_HPP

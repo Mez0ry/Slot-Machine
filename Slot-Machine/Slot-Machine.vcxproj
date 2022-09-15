@@ -145,13 +145,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CDrumRotation.hpp" />
+    <ClInclude Include="CInputWaiting.hpp" />
     <ClInclude Include="CSDLContext.hpp" />
+    <ClInclude Include="CShowResults.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="GameStates.hpp" />
+    <ClInclude Include="MainScene.hpp" />
+    <ClInclude Include="Utils.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CDrumRotation.cpp" />
+    <ClCompile Include="CInputWaiting.cpp" />
     <ClCompile Include="CSDLContext.cpp" />
+    <ClCompile Include="CShowResults.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameStates.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainScene.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
