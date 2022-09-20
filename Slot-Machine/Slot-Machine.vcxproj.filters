@@ -57,6 +57,9 @@
     <ClInclude Include="MainScene.hpp">
       <Filter>Header Files\scenes</Filter>
     </ClInclude>
+    <ClInclude Include="TextureManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -85,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="MainScene.cpp">
       <Filter>Source Files\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

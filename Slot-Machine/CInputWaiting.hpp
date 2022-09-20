@@ -7,10 +7,11 @@ class CInputWaiting : public GameStates
 public:
 	CInputWaiting();
 	~CInputWaiting();
-	void setup();
-	void input_handler();
+	void setup(const SDL_Rect& start_rect, const SDL_Rect& stop_rect);
+	enum_GameStates input_handler() override;
+ 
 private:
-	Utils::vec2 mousePosition_;
+	SDL_Rect rect_[2];
 };
 
 #endif // !SLOTMACHINE_CInputWaiting_HPP

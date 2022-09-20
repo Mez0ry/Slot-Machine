@@ -21,10 +21,9 @@ void Game::play()
 
 		SDL_RenderClear(CSDLContext::instance().get_renderer());
 
+		update();
 		render();
 		input_handler();
-		update();
-		 
 
 		SDL_RenderPresent(CSDLContext::instance().get_renderer());
 	}
@@ -32,14 +31,17 @@ void Game::play()
 
 void Game::update()
 {
+	mainScene_.update();
 }
 
 void Game::render()
 {
+	mainScene_.render();
 }
 
 void Game::input_handler()
 {
+	mainScene_.input_handler();
 	if (SDL_PollEvent(&event_)) {
 		switch (event_.type) {
 		case SDL_QUIT: {

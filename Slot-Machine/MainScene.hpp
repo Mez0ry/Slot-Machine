@@ -7,9 +7,17 @@
 #include "CShowResults.hpp"
 #include "CInputWaiting.hpp"
 #include "CDrumRotation.hpp"
-
+#include "TextureManager.hpp"
+#include <future>
 class MainScene
 {
+private:
+	CInputWaiting InputWaitingState_;
+	CShowResults ShowResultsState_;
+	CDrumRotation drumRotationState_;
+	GameStates* State_;
+private:
+	TextureManager TextureManager_;
 public:
 	MainScene();
 	~MainScene();
@@ -20,13 +28,16 @@ public:
 	void render();
 
 private:
-	SDL_Rect squareRect_;
-	SDL_Rect starRect_;
-	SDL_Rect circleRect_;
 
-	SDL_Texture* squareTexture_;
-	SDL_Texture* starTexture_;
-	SDL_Texture* circleTexture_;
+	enum_GameStates enumStates_;
+
+	SDL_Rect startRect_;
+	SDL_Rect stopRect_;
+
+	SDL_Texture* startTexture_;
+	SDL_Texture* stopTexture_;
+ 
+	Utils::vec2 RectIndexies_;
 };
 
 #endif // !SLOTMACHINE_MainScene_HPP
