@@ -1,9 +1,7 @@
 #include "CInputWaiting.hpp"
 
-CInputWaiting::CInputWaiting(const SDL_Rect& start_rect, const SDL_Rect& stop_rect, TextureManager& Texture_Manager)
+CInputWaiting::CInputWaiting(TextureManager& Texture_Manager) : GameStates(0)
 {
-	rect_[0] = start_rect;
-	rect_[1] = stop_rect;
 	this->TextureManager_ = Texture_Manager;
 }
 
@@ -24,9 +22,9 @@ void CInputWaiting::input_handler()
 		}
 		case SDL_MOUSEBUTTONDOWN: {
 			for (size_t read_index = 0; read_index < 2; read_index++) {
-				if (event_.button.button == SDL_BUTTON_LEFT && mousePosition_.x >= rect_[read_index].x && mousePosition_.x <= (rect_[read_index].x + rect_[read_index].w) && mousePosition_.y >= rect_[read_index].y && mousePosition_.y <= rect_[read_index].y + rect_[read_index].h) {
+				if (event_.button.button == SDL_BUTTON_LEFT && mousePosition_.x >= StartStopRect_[read_index].x && mousePosition_.x <= (StartStopRect_[read_index].x + StartStopRect_[read_index].w) && mousePosition_.y <= StartStopRect_[read_index].y + StartStopRect_[read_index].h) {
 					if (read_index == 0) {
-						this->context_->ChangeStateTo(new CDrumRotation(TextureManager_, rect_[1]));
+						this->context_->ChangeStateTo(new CDrumRotation(TextureManager_));
 					}
 					if (read_index == 1) {
 						std::cout << "Stop" << '\n';

@@ -12,7 +12,7 @@ private:
 	SDL_Rect* pRect[3][3];
 public:
 	CDrumRotation() = default;
-	CDrumRotation(TextureManager& texture_manager, SDL_Rect& stop_rect);
+	CDrumRotation(TextureManager& texture_manager);
 	~CDrumRotation();
 
 	void update(SDL_Rect Rect_Arr[3][3], Utils::vec2& indexes);
@@ -21,7 +21,7 @@ public:
 
 private:
 	bool bStopPressed_;
-	SDL_Rect StopRect_;
+ 
 	int SlotIsReady;
 	int MaxTime_;
 

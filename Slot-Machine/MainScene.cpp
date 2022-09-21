@@ -37,7 +37,7 @@ void MainScene::setup()
 	RectIndexies_.x = 0;
 	RectIndexies_.y = 0;
 
-	StateContext_ = new GameStateContext(new CInputWaiting(startRect_, stopRect_, TextureManager_));
+	StateContext_ = new GameStateContext(new CInputWaiting(TextureManager_));
 }
 
 void MainScene::update()

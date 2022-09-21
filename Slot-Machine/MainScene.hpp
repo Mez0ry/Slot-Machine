@@ -29,8 +29,6 @@ public:
 
 private:
 
-	enum_GameStates enumStates_;
-
 	SDL_Rect startRect_;
 	SDL_Rect stopRect_;
 

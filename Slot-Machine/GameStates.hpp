@@ -4,10 +4,6 @@
 #include "Utils.hpp"
  
 
-enum class enum_GameStates {
-	WaitingInput, RotatingDrums, ShowingResults, START, STOP, UNKNOWN
-};
-
 class GameStateContext;
 
 class GameStates
@@ -29,10 +25,12 @@ public:
 protected:
 	SDL_Event event_;
 	int timer_;
+	SDL_Rect StartStopRect_[2];
 	Utils::vec2 mousePosition_;
-	GameStates(int timer) : timer_(timer) {}
+	GameStates(int timer) : timer_(timer) { StartStopRect_[0] = { 600,200,100,100 }; StartStopRect_[1] = { 200,0,100,100 }; }
 
 private:
+
 };
 
 class GameStateContext {

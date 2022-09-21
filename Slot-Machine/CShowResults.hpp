@@ -13,7 +13,7 @@ private:
 	};
 public:
 	CShowResults();
-	CShowResults(const std::vector<Utils::vec2>& slot_win_indexes, TextureManager& texture_manager, SDL_Rect& stop_rect);
+	CShowResults(const std::vector<Utils::vec2>& slot_win_indexes, TextureManager& texture_manager);
 	~CShowResults();
 
 	void input_handler();
@@ -25,7 +25,7 @@ private:
 
 	int calculatePayOut();
 	TextureManager textureManager_;
-	SDL_Rect stopRect_;
+
 	TTF_Font* font_;
 	std::vector<Utils::vec2> SlotWinIndexes;
  

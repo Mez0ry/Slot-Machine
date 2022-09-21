@@ -1,19 +1,18 @@
 #include "CDrumRotation.hpp"
 
-CDrumRotation::CDrumRotation(TextureManager& texture_manager, SDL_Rect& stop_rect) : GameStates(0)
+CDrumRotation::CDrumRotation(TextureManager& texture_manager) : GameStates(0)
 {
 	TextureManager_ = texture_manager;
-	this->StopRect_ = stop_rect;
 
 	MaxTime_ = Utils::Random::random_num(200, 5000);
 	SlotIsReady = -1;
 	Finished_ = false;
-	SlotWinnerIndexes_.clear();
+	SlotWinnerIndexes_.reserve(20);
 }
 
 CDrumRotation::~CDrumRotation()
 {
-
+	SlotWinnerIndexes_.clear();
 }
 
 void CDrumRotation::update(SDL_Rect Rect_Arr[3][3], Utils::vec2& indexes)
@@ -94,7 +93,7 @@ void CDrumRotation::update(SDL_Rect Rect_Arr[3][3], Utils::vec2& indexes)
 void CDrumRotation::input_handler()
 {
 	if (Finished_) {
-		this->context_->ChangeStateTo(new CShowResults(SlotWinnerIndexes_, TextureManager_, StopRect_));
+		this->context_->ChangeStateTo(new CShowResults(SlotWinnerIndexes_, TextureManager_));
 	}
 
 	if (SDL_PollEvent(&event_)) {
@@ -106,7 +105,7 @@ void CDrumRotation::input_handler()
 			break;
 		}
 		case SDL_MOUSEBUTTONDOWN: {
-			if (event_.button.button == SDL_BUTTON_LEFT && mousePosition_.x >= StopRect_.x && mousePosition_.x <= (StopRect_.x + StopRect_.w) && mousePosition_.y >= StopRect_.y && mousePosition_.y <= StopRect_.y + StopRect_.h) {
+			if (event_.button.button == SDL_BUTTON_LEFT && mousePosition_.x >= StartStopRect_[1].x && mousePosition_.x <= (StartStopRect_[1].x + StartStopRect_[1].w) && mousePosition_.y >= StartStopRect_[1].y && mousePosition_.y <= StartStopRect_[1].y + StartStopRect_[1].h) {
 				bStopPressed_ = true;
 			}
 			 

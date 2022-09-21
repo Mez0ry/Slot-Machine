@@ -9,13 +9,13 @@ class CInputWaiting : public GameStates
 	TextureManager TextureManager_;
 public:
 	CInputWaiting() = default;
-	CInputWaiting(const SDL_Rect& start_rect, const SDL_Rect& stop_rect,TextureManager& Texture_Manager);
+	CInputWaiting(TextureManager& Texture_Manager);
 	~CInputWaiting();
  
 	void input_handler() override;
  
 private:
-	SDL_Rect rect_[2];
+ 
 };
 
 #endif // !SLOTMACHINE_CInputWaiting_HPP
