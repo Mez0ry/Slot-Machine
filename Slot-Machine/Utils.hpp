@@ -15,13 +15,14 @@ namespace Utils {
 */
 	[[nodiscard]] SDL_Texture* load_texture(SDL_Renderer* renderer, const char* path);
 
-	void draw_rectangle(SDL_Renderer* renderer, SDL_Rect rect_, SDL_Color color);
 	namespace Reset {
 		void reset_SlotPosition(SDL_Rect Rect_Arr[3][3]);
 		void reset_SlotPosition(SDL_Rect& Rect_Arr, int row_index, int col_index);
 	}
+
 	namespace RectManager {
-		Utils::vec2& rectClosestTo(SDL_Rect rect[3][3], const size_t row, int target);
+		Utils::vec2 rectClosestTo(SDL_Rect rect[3][3], const size_t row, int target);
+		void draw_rectangle(const SDL_Rect& rect_, const SDL_Color& color);
 	}
 
 	namespace Random {

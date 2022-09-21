@@ -5,7 +5,6 @@
 void TextureManager::set_Target(const size_t row, const size_t col){
 	this->TargetRow_ = row;
 	this->TargetCol_ = col;
-
 }
 
 void TextureManager::set_Width(const int width)

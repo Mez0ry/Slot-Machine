@@ -3,19 +3,21 @@
 #include "GameStates.hpp"
 #include "Utils.hpp"
 #include "TextureManager.hpp"
+#include "CShowResults.hpp"
 
 class CDrumRotation : public GameStates
 {
 private:
 	TextureManager TextureManager_;
+	SDL_Rect* pRect[3][3];
 public:
-	CDrumRotation();
+	CDrumRotation() = default;
+	CDrumRotation(TextureManager& texture_manager, SDL_Rect& stop_rect);
 	~CDrumRotation();
 
-	void setup(TextureManager& texture_manager,SDL_Rect& stop_rect);
 	void update(SDL_Rect Rect_Arr[3][3], Utils::vec2& indexes);
  
-	enum_GameStates input_handler() override;
+	void input_handler() override;
 
 private:
 	bool bStopPressed_;
@@ -24,7 +26,8 @@ private:
 	int MaxTime_;
 
 	bool Finished_ = false;
-	std::vector<Utils::vec2> SlotWinnerIndexies_;
+	std::vector<Utils::vec2> SlotWinnerIndexes_;
+	
 };
 
 #endif // !SLOTMACHINE_CDrumRotation_HPP

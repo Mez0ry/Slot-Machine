@@ -15,7 +15,7 @@ private:
 	CInputWaiting InputWaitingState_;
 	CShowResults ShowResultsState_;
 	CDrumRotation drumRotationState_;
-	GameStates* State_;
+	GameStateContext* StateContext_;
 private:
 	TextureManager TextureManager_;
 public:

@@ -8,14 +8,7 @@ SDL_Texture* Utils::load_texture(SDL_Renderer* renderer, const char* path)
     return texture ? texture : nullptr;
 }
 
-void Utils::draw_rectangle(SDL_Renderer* renderer, SDL_Rect rect_, SDL_Color color)
-{
-    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
-    SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-    SDL_RenderDrawLine(renderer, rect_.x, rect_.y, rect_.w, rect_.y);
-   
-}
+ 
 
 void Utils::Reset::reset_SlotPosition(SDL_Rect Rect_Arr[3][3])
 {
@@ -71,7 +64,7 @@ int Utils::Random::random_num(int from, int to)
 	return dist(gen);
 }
 
-Utils::vec2& Utils::RectManager::rectClosestTo(SDL_Rect rect[3][3], const size_t row, int target)
+Utils::vec2 Utils::RectManager::rectClosestTo(SDL_Rect rect[3][3], const size_t row, int target)
 {
 	Utils::vec2 winnerSlotIndex_{};
 	int closestToCenter = INT_MAX;
@@ -88,4 +81,14 @@ Utils::vec2& Utils::RectManager::rectClosestTo(SDL_Rect rect[3][3], const size_t
 	}
 
 	return winnerSlotIndex_;
+}
+
+void Utils::RectManager::draw_rectangle(const SDL_Rect& rect_, const SDL_Color& color)
+{
+	SDL_SetRenderDrawColor(CSDLContext::instance().get_renderer(), 0x00, 0x00, 0x00, 0x00);
+	SDL_RenderClear(CSDLContext::instance().get_renderer());
+
+	SDL_SetRenderDrawColor(CSDLContext::instance().get_renderer(), color.r, color.g, color.b, color.a);
+	SDL_RenderDrawRect(CSDLContext::instance().get_renderer(), &rect_);
+
 }

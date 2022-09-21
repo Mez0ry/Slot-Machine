@@ -1,24 +1,18 @@
 #include "CDrumRotation.hpp"
 
-CDrumRotation::CDrumRotation() : GameStates(0)
-{
- 
-}
-
-CDrumRotation::~CDrumRotation()
-{
-
-}
-
-void CDrumRotation::setup(TextureManager& texture_manager, SDL_Rect& stop_rect)
+CDrumRotation::CDrumRotation(TextureManager& texture_manager, SDL_Rect& stop_rect) : GameStates(0)
 {
 	TextureManager_ = texture_manager;
 	this->StopRect_ = stop_rect;
 
-	MaxTime_ = Utils::Random::random_num(0, 4000);
+	MaxTime_ = Utils::Random::random_num(200, 5000);
 	SlotIsReady = -1;
 	Finished_ = false;
-	SlotWinnerIndexies_.clear();
+	SlotWinnerIndexes_.clear();
+}
+
+CDrumRotation::~CDrumRotation()
+{
 
 }
 
@@ -54,7 +48,7 @@ void CDrumRotation::update(SDL_Rect Rect_Arr[3][3], Utils::vec2& indexes)
 				const int Center = 350;
 				winnter_slot_indexies = Utils::RectManager::rectClosestTo(Rect_Arr, y, Center);
 
-				SlotWinnerIndexies_.push_back(winnter_slot_indexies);
+				SlotWinnerIndexes_.push_back(winnter_slot_indexies);
 
 				while (Rect_Arr[winnter_slot_indexies.y][winnter_slot_indexies.x].y > Center) {
 					Rect_Arr[winnter_slot_indexies.y][winnter_slot_indexies.x].y -= 1;
@@ -97,10 +91,10 @@ void CDrumRotation::update(SDL_Rect Rect_Arr[3][3], Utils::vec2& indexes)
 	 
 }
 
-enum_GameStates CDrumRotation::input_handler()
+void CDrumRotation::input_handler()
 {
 	if (Finished_) {
-		return enum_GameStates::ShowingResults;
+		this->context_->ChangeStateTo(new CShowResults(SlotWinnerIndexes_, TextureManager_, StopRect_));
 	}
 
 	if (SDL_PollEvent(&event_)) {
@@ -120,5 +114,5 @@ enum_GameStates CDrumRotation::input_handler()
 		}
 		} // !switch
 	}
-	return enum_GameStates::UNKNOWN;
+	 
 }

@@ -1,14 +1,18 @@
 #ifndef SLOTMACHINE_CInputWaiting_HPP
 #define SLOTMACHINE_CInputWaiting_HPP
 #include "GameStates.hpp"
+#include "CDrumRotation.hpp"
+#include "TextureManager.hpp"
 
 class CInputWaiting : public GameStates
 {
+	TextureManager TextureManager_;
 public:
-	CInputWaiting();
+	CInputWaiting() = default;
+	CInputWaiting(const SDL_Rect& start_rect, const SDL_Rect& stop_rect,TextureManager& Texture_Manager);
 	~CInputWaiting();
-	void setup(const SDL_Rect& start_rect, const SDL_Rect& stop_rect);
-	enum_GameStates input_handler() override;
+ 
+	void input_handler() override;
  
 private:
 	SDL_Rect rect_[2];

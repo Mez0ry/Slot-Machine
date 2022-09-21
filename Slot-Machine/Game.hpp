@@ -11,7 +11,7 @@ private:
 	uint32_t frameTime_;
 
 	bool bGameLoop_;
-private:/** Access specifier for SDL context*/
+private:
 	SDL_Event event_;
 public:
 	Game();

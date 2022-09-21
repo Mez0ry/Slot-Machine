@@ -2,7 +2,7 @@
 #define SLOTMACHINE_TextureManager_HPP
 #include "SDL.h"
 #include "Utils.hpp"
-
+#include <vector>
 class TextureManager
 {
 private:
@@ -21,7 +21,8 @@ public:
 	void set_Position(const Utils::vec2& pos);
 
 public:
-	SDL_Texture*& operator()(const int row, const int col) {
+	SDL_Texture*& operator()(const size_t row, const size_t col) {
+		
 		return pTexture_[row][col];
 	}
 private:
