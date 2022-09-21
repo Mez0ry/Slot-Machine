@@ -49,7 +49,7 @@ void CShowResults::update()
 void CShowResults::render()
 {
  
-	std::string score_text = "You're gain: " + std::to_string(calculatePayOut());
+	std::string score_text = "Your winning: " + std::to_string(calculatePayOut());
 	SDL_Color textColor = { 0xFF, 0xFF, 0 ,0xFF };
 	SDL_Surface* textSurface = TTF_RenderText_Solid(font_, score_text.c_str(), textColor);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(CSDLContext::instance().get_renderer(), textSurface);
@@ -60,7 +60,7 @@ void CShowResults::render()
 	SDL_RenderCopy(CSDLContext::instance().get_renderer(), texture, NULL, &renderQuad);
 
 	textColor = { 0XFF,0x0,0,0xFF };
-	std::string take_points = "Take points";
+	std::string take_points = "take your winnings";
 	SDL_Surface* textSurface2 = TTF_RenderText_Solid(font_, take_points.c_str(), textColor);
 	SDL_Texture* texture2 = SDL_CreateTextureFromSurface(CSDLContext::instance().get_renderer(), textSurface2);
 	TakePoints_.w = textSurface2->w;
