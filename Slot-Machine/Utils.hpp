@@ -2,7 +2,7 @@
 #define SLOTMACHINE_UTILS_HPP
 #include "SDL.h" 
 #include "SDL_image.h"
-#include "CSDLContext.hpp"
+#include "CSDLContext.hpp"	
 #include <random>
 
 namespace Utils {
@@ -28,6 +28,12 @@ namespace Utils {
 	namespace Random {
 		int random_num(int from, int to);
 	}
+
+	namespace FontManager {
+		[[nodiscard]] TTF_Font* open_font(const char* font_path, int font_size);
+		[[nodiscard]] SDL_Surface* get_FontSurface(TTF_Font* font, const char* text_to_render, SDL_Color color);
+		[[nodiscard]] SDL_Texture* get_FontTextureFromSurface(SDL_Renderer* renderer, SDL_Surface* text_surface);
+	}// !FontManager
 } // !Utils
 
 #endif // !SLOTMACHINE_UTILS_HPP

@@ -92,3 +92,25 @@ void Utils::RectManager::draw_rectangle(const SDL_Rect& rect_, const SDL_Color& 
 	SDL_RenderDrawRect(CSDLContext::instance().get_renderer(), &rect_);
 
 }
+
+TTF_Font* Utils::FontManager::open_font(const char* font_path, int font_size)
+{
+	TTF_Font* font = TTF_OpenFont(font_path, font_size);
+	return font ? font : nullptr;
+}
+
+SDL_Surface* Utils::FontManager::get_FontSurface(TTF_Font* font, const char* text_to_render, SDL_Color color)
+{
+
+	SDL_Surface* text_surface = TTF_RenderText_Solid(font, text_to_render, color);
+	return text_surface ? text_surface : nullptr;
+}
+
+SDL_Texture* Utils::FontManager::get_FontTextureFromSurface(SDL_Renderer* renderer, SDL_Surface* text_surface)
+{
+
+	SDL_Texture* texture_text = SDL_CreateTextureFromSurface(renderer, text_surface);
+	SDL_FreeSurface(text_surface);
+
+	return texture_text ? texture_text : nullptr;
+}

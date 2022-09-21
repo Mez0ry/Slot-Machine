@@ -2,9 +2,12 @@
 #define SLOTMACHINE_GameStates_HPP
 #include "CSDLContext.hpp"
 #include "Utils.hpp"
+ 
+
 enum class enum_GameStates {
 	WaitingInput, RotatingDrums, ShowingResults, START, STOP, UNKNOWN
 };
+
 class GameStateContext;
 
 class GameStates
@@ -21,8 +24,8 @@ public:
 
 	virtual void update(SDL_Rect Rect_Arr[3][3], Utils::vec2& indexes){}
 	
-	virtual void input_handler() { };
- 
+	virtual void input_handler() { }
+	virtual void render() { }
 protected:
 	SDL_Event event_;
 	int timer_;
@@ -35,7 +38,7 @@ private:
 class GameStateContext {
 private:
 	GameStates* state_;
-	 
+ 
 public:
 	GameStateContext(GameStates* state) : state_(nullptr) {
 		this->ChangeStateTo(state);
@@ -48,7 +51,7 @@ public:
 		this->state_ = state;
 		this->state_->set_state(this);
 	}
-
+ 
 	void updateRequest(SDL_Rect Rect_Arr[3][3], Utils::vec2& indexes) {
 		this->state_->update(Rect_Arr, indexes);
 	}
@@ -56,7 +59,10 @@ public:
 	void HandleInputRequest() {
 		this->state_->input_handler();
 	}
-
+ 
+	void renderRequest() {
+		this->state_->render();
+	}
 private:
 };
 #endif // !SLOTMACHINE_GameStates_HPP

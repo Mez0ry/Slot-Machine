@@ -54,6 +54,9 @@ void MainScene::input_handler()
 
 void MainScene::render()
 {
+ 
+ 
+
 	SDL_Rect rect2 = { 50,200,700, 400 };
 	SDL_Color color1 = { 255,0,0,255 };
 	Utils::RectManager::draw_rectangle(rect2, color1);
@@ -80,5 +83,5 @@ void MainScene::render()
 	
 	SDL_RenderCopy(CSDLContext::instance().get_renderer(), startTexture_, NULL, &startRect_);
 	SDL_RenderCopy(CSDLContext::instance().get_renderer(), stopTexture_, NULL, &stopRect_);
-
+	StateContext_->renderRequest();
 }

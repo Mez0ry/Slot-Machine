@@ -18,7 +18,7 @@ Game::~Game()
 void Game::play()	
 {
 	while (bGameLoop_) {
-
+		SDL_SetRenderDrawColor(CSDLContext::instance().get_renderer(), 0x00, 0x00, 0x00, 0x00);
 		SDL_RenderClear(CSDLContext::instance().get_renderer());
 
 		update();
